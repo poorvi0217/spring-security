@@ -17,7 +17,7 @@ public class TokenService {
 
     private  final JwtEncoder encoder;
 
-    private final Duration lifeTime = Duration.ofMinutes(1);
+    private final Duration lifeTime = Duration.ofMinutes(10);
 
     public TokenService(JwtEncoder encoder) {
         this.encoder = encoder;
@@ -35,7 +35,7 @@ public class TokenService {
                 .toList();
 
         JwtClaimsSet claims = JwtClaimsSet.builder()
-                .issuer("csf-security")
+                .issuer("cfs-security")
                 .subject(authentication.getName())
                 .issuedAt(now)
                 .expiresAt(now.plus(lifeTime))
